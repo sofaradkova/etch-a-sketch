@@ -23,7 +23,7 @@ function setUpGrid(size) {
     squares.forEach((square) => {
     
         square.addEventListener('mouseenter', () => {
-          square.style.background = 'red';
+          square.style.background = '#52796f';
         });
       });
 }
@@ -43,3 +43,19 @@ function clear() {
 }
 
 setUpGrid(30);
+
+function takeShot() {
+    html2canvas(gridContainer).then(
+		function (canvas) {
+            canvas.style.height = '200px';
+            canvas.style.width = '200px';
+            document.getElementById('output').innerHTML = '';
+			document.getElementById('output').appendChild(canvas);
+		})
+}
+
+const saveBtn = document.querySelector('#save');
+
+saveBtn.addEventListener('click', function () {
+    takeShot();
+});
